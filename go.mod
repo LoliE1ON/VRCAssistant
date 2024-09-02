@@ -1,4 +1,4 @@
-module changeme
+module github.com/LoliE1ON/VRCAssistant
 
 go 1.22.4
 
