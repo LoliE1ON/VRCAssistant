@@ -1,9 +1,11 @@
 package service
 
-import "github.com/wailsapp/wails/v3/pkg/application"
+import "github.com/LoliE1ON/VRCAssistant/inrfastructure/vrchat"
 
-type ApplicationService struct{}
+type ApplicationService struct {
+}
 
-func (applicationService *ApplicationService) Quite() {
-	application.Get().Quit()
+func (applicationService *ApplicationService) Quit() {
+	vrchat.DoTest()
+	//application.Get().Quit()
 }

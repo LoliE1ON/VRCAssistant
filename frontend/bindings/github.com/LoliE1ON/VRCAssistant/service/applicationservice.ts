@@ -5,7 +5,7 @@
 // @ts-ignore: Unused imports
 import {Call as $Call} from "@wailsio/runtime";
 
-export function Quite(): Promise<void> & { cancel(): void } {
-    let $resultPromise = $Call.ByID(3828876114) as any;
+export function Quit(): Promise<void> & { cancel(): void } {
+    let $resultPromise = $Call.ByID(247712451) as any;
     return $resultPromise;
 }

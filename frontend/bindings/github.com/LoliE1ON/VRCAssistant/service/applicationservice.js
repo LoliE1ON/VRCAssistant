@@ -9,7 +9,7 @@ import {Call as $Call, Create as $Create} from "@wailsio/runtime";
 /**
  * @returns {Promise<void> & { cancel(): void }}
  */
-export function Quite() {
-    let $resultPromise = /** @type {any} */($Call.ByID(3828876114));
+export function Quit() {
+    let $resultPromise = /** @type {any} */($Call.ByID(247712451));
     return $resultPromise;
 }

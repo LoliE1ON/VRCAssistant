@@ -2,7 +2,7 @@ import { ApplicationService } from "../../../bindings/github.com/LoliE1ON/VRCAss
 
 export const WindowPanel = () => {
     const closeWindow = async () => {
-        await ApplicationService.Quite();
+        await ApplicationService.Quit();
     }
 
     return (
