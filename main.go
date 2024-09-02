@@ -24,9 +24,13 @@ func main() {
 	})
 
 	app.NewWebviewWindowWithOptions(application.WebviewWindowOptions{
-		Title:     "VRCAssistant",
-		URL:       "/",
-		Frameless: true,
+		Title:         "VRCAssistant",
+		URL:           "/",
+		Frameless:     true,
+		DisableResize: true,
+		Centered:      true,
+		Width:         1150,
+		Height:        800,
 	})
 
 	err := app.Run()
