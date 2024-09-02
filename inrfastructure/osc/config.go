@@ -1,4 +1,4 @@
-package vrchat
+package osc
 
 type Osc struct {
 	Host       string

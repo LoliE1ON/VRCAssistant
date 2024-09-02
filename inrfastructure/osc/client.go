@@ -1,4 +1,4 @@
-package vrchat
+package osc
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 var client = osc.NewClient(oscConfig.Host, oscConfig.ClientPort)
 
-func sendTest() {
+func SendTest() {
 	msg := osc.NewMessage("/test")
 	msg.Append("hello")
 
