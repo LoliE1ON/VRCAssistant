@@ -398,7 +398,7 @@ tasks:
       - "renderer/bindings/**/*"
     cmds:
       # For a complete list of options, run `wails3 generate bindings -help`
-      - wails3 generate bindings -i -ts -f '{{.BUILD_FLAGS}}'
+      - wails3 generate bindings -d 'renderer/bindings' -i -ts -f '{{.BUILD_FLAGS}}'
 
   go:mod:tidy:
     summary: Runs `go mod tidy`
