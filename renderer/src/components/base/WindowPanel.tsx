@@ -1,8 +1,47 @@
 import { ApplicationService } from "../../../bindings/github.com/LoliE1ON/VRCAssistant/service";
+import {useEffect, useState} from "react";
+import {VrchatModel} from "../../../bindings/github.com/LoliE1ON/VRCAssistant/domain/vrchat";
 
 export const WindowPanel = () => {
     const closeWindow = async () => {
         await ApplicationService.Quit();
+    }
+
+    const [data, setData] = useState<VrchatModel>();
+
+    useEffect(() => {
+        const intervalId = setInterval(async () => {
+            const model = await ApplicationService.GetModel();
+            setData(model);
+        }, 5000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const Online = () => {
+        if (data?.IsRunning) {
+            return <div className="text-green-500 flex flex-row gap-4">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                    <path
+                        d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                    <path
+                        d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+
+                VRChat is running
+            </div>;
+        }
+
+        return <div className="text-red-500 flex flex-row gap-4">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
+                <path
+                    d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                <path
+                    d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+
+            VRChat is not running
+        </div>;
     }
 
     return (
@@ -25,9 +64,11 @@ export const WindowPanel = () => {
                             </svg>
                         </div>
 
-                        <div>VRCAssistant</div>
+                        <div className="text-xl font-semibold">VRCAssistant</div>
                     </div>
-
+                </div>
+                <div className="py-4 px-4 text-sm">
+                    <Online/>
                 </div>
                 <div className="py-4 px-4 hover:text-secondary cursor-pointer" onClick={closeWindow}>
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 64 64"
