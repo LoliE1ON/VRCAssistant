@@ -1,4 +1,4 @@
-package osc
+package oscServer
 
 import (
 	"fmt"

@@ -1,13 +1,11 @@
 package vrchat
 
 import (
-	"fmt"
-	"github.com/LoliE1ON/VRCAssistant/inrfastructure/osc"
+	"github.com/LoliE1ON/VRCAssistant/inrfastructure/oscClient"
+	"github.com/LoliE1ON/VRCAssistant/inrfastructure/oscServer"
 )
 
 func DoTest() {
-	fmt.Println("test start")
-
-	osc.HandleTest()
-	osc.SendTest()
+	oscServer.HandleTest()
+	oscClient.SendTest()
 }

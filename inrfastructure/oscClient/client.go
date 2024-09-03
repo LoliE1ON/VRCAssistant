@@ -1,11 +1,11 @@
-package osc
+package oscClient
 
 import (
 	"fmt"
 	"github.com/hypebeast/go-osc/osc"
 )
 
-var client = osc.NewClient(oscConfig.Host, oscConfig.ClientPort)
+var client = osc.NewClient(config.Host, config.Port)
 
 func SendTest() {
 	msg := osc.NewMessage("/test")

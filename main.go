@@ -3,7 +3,7 @@ package main
 import (
 	"embed"
 	_ "embed"
-	"github.com/LoliE1ON/VRCAssistant/service"
+	"github.com/LoliE1ON/VRCAssistant/config"
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"log"
 )
@@ -12,28 +12,13 @@ import (
 var assets embed.FS
 
 func main() {
-	app := application.New(application.Options{
-		Name:        "VRCAssistant",
-		Description: "VRChat Assistant",
-		Services: []application.Service{
-			application.NewService(&service.ApplicationService{}),
-		},
-		Assets: application.AssetOptions{
-			Handler: application.AssetFileServerFS(assets),
-		},
-	})
+	config.ConfigureApplication(assets)
 
-	app.NewWebviewWindowWithOptions(application.WebviewWindowOptions{
-		Title:         "VRCAssistant",
-		URL:           "/",
-		Frameless:     true,
-		DisableResize: true,
-		Centered:      true,
-		Width:         1150,
-		Height:        800,
-	})
+	var instance = application.New(config.Application)
 
-	err := app.Run()
+	instance.NewWebviewWindowWithOptions(config.Window)
+
+	err := instance.Run()
 	if err != nil {
 		log.Fatal(err)
 	}

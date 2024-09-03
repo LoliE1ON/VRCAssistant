@@ -1,4 +1,4 @@
-package osc
+package oscServer
 
 import (
 	"fmt"
@@ -9,9 +9,11 @@ func createServer() (*osc.Server, *osc.StandardDispatcher) {
 	var dispatcher = osc.NewStandardDispatcher()
 
 	var server = &osc.Server{
-		Addr:       "127.0.0.1:9000",
+		Addr:       "127.0.0.1:9000", // TODO: use config
 		Dispatcher: dispatcher,
 	}
+
+	fmt.Println("OSC server listening on", server.Addr)
 
 	go listenAndServe(server)
 
@@ -23,6 +25,4 @@ func listenAndServe(server *osc.Server) {
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	fmt.Println("asdadsdasd as asd as")
 }
