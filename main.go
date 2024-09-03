@@ -8,7 +8,7 @@ import (
 	"log"
 )
 
-//go:embed frontend/dist
+//go:embed renderer/dist
 var assets embed.FS
 
 func main() {

@@ -6,7 +6,7 @@ config:
     dir:
       - .git
       - node_modules
-      - frontend
+      - renderer
       - bin
     file:
       - .DS_Store

@@ -360,7 +360,7 @@ tasks:
 
   install:frontend:deps:
     summary: Install frontend dependencies
-    dir: frontend
+    dir: renderer
     sources:
       - package.json
       - package-lock.json
@@ -375,7 +375,7 @@ tasks:
 
   build:frontend:
     summary: Build the frontend project
-    dir: frontend
+    dir: renderer
     sources:
       - "**/*"
     generates:
@@ -395,7 +395,7 @@ tasks:
       - go.mod
       - go.sum
     generates:
-      - "frontend/bindings/**/*"
+      - "renderer/bindings/**/*"
     cmds:
       # For a complete list of options, run `wails3 generate bindings -help`
       - wails3 generate bindings -i -ts -f '{{.BUILD_FLAGS}}'
@@ -432,7 +432,7 @@ tasks:
 
   dev:frontend:
     summary: Runs the frontend in development mode
-    dir: frontend
+    dir: renderer
     deps:
       - task: install:frontend:deps
     cmds:
