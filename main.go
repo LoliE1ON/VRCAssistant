@@ -4,6 +4,8 @@ import (
 	"embed"
 	_ "embed"
 	"github.com/LoliE1ON/VRCAssistant/config"
+	"github.com/LoliE1ON/VRCAssistant/domain/processMonitor"
+	"github.com/LoliE1ON/VRCAssistant/service"
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"log"
 )
@@ -12,7 +14,12 @@ import (
 var assets embed.FS
 
 func main() {
-	config.ConfigureApplication(assets)
+	processMonitor.Monitor()
+
+	config.Application.Assets.Handler = application.AssetFileServerFS(assets)
+	config.Application.Services = []application.Service{
+		application.NewService(&service.ApplicationService{}),
+	}
 
 	var instance = application.New(config.Application)
 
