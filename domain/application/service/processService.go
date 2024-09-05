@@ -1,15 +1,18 @@
-package processMonitor
+package service
 
 import (
 	"fmt"
-	"github.com/LoliE1ON/VRCAssistant/config"
-	"github.com/LoliE1ON/VRCAssistant/domain/vrchat"
+	"github.com/LoliE1ON/VRCAssistant/domain/vrchat/config"
+	"github.com/LoliE1ON/VRCAssistant/domain/vrchat/model"
 	"github.com/mitchellh/go-ps"
 	"time"
 )
 
-func Monitor() {
-	go monitorProcesses()
+func MonitorProcesses() {
+	go func() {
+		fmt.Println("Starting new goroutine application.service.MonitorProcesses...")
+		monitorProcesses()
+	}()
 }
 
 func monitorProcesses() {
@@ -28,7 +31,7 @@ func monitorProcesses() {
 			}
 		}
 
-		vrchat.Vrchat.IsRunning = appFound
+		model.Vrchat.IsRunning = appFound
 
 		if appFound {
 			fmt.Printf("Application %s is running \n", config.Vrchat.ProcessName)

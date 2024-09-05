@@ -1,17 +1,19 @@
-import { ApplicationService } from "../../../bindings/github.com/LoliE1ON/VRCAssistant/service";
+
 import {useEffect, useState} from "react";
-import {VrchatModel} from "../../../bindings/github.com/LoliE1ON/VRCAssistant/domain/vrchat";
+import {VrchatModel} from "../../../bindings/github.com/LoliE1ON/VRCAssistant/domain/vrchat/model";
+import {TestService} from "../../../bindings/github.com/LoliE1ON/VRCAssistant/domain/vrchat/service";
+
 
 export const WindowPanel = () => {
     const closeWindow = async () => {
-        await ApplicationService.Quit();
+        await TestService.Quit();
     }
 
     const [data, setData] = useState<VrchatModel>();
 
     useEffect(() => {
         const intervalId = setInterval(async () => {
-            const model = await ApplicationService.GetModel();
+            const model = await TestService.GetModel();
             setData(model);
         }, 5000);
 
@@ -28,7 +30,7 @@ export const WindowPanel = () => {
                         d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
                 </svg>
 
-                VRChat is running
+                VRChat is running хуй 2 2222
             </div>;
         }
 
@@ -40,7 +42,7 @@ export const WindowPanel = () => {
                     d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
             </svg>
 
-            VRChat is not running
+            VRChat is not running хуй
         </div>;
     }
 

@@ -1,4 +1,4 @@
-package vrchat
+package model
 
 type VrchatModel struct {
 	IsRunning bool

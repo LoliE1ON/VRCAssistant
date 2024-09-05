@@ -7,14 +7,14 @@ import {Call as $Call} from "@wailsio/runtime";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import * as vrchat$0 from "../domain/vrchat/models.js";
+import * as model$0 from "../model/models.js";
 
-export function GetModel(): Promise<vrchat$0.VrchatModel> & { cancel(): void } {
-    let $resultPromise = $Call.ByID(4081642861) as any;
+export function GetModel(): Promise<model$0.VrchatModel> & { cancel(): void } {
+    let $resultPromise = $Call.ByID(1613575085) as any;
     return $resultPromise;
 }
 
 export function Quit(): Promise<void> & { cancel(): void } {
-    let $resultPromise = $Call.ByID(247712451) as any;
+    let $resultPromise = $Call.ByID(928129283) as any;
     return $resultPromise;
 }
