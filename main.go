@@ -7,6 +7,7 @@ import (
 	service2 "github.com/LoliE1ON/VRCAssistant/domain/application/service"
 	"github.com/LoliE1ON/VRCAssistant/domain/vrchat/service"
 	"github.com/wailsapp/wails/v3/pkg/application"
+	"github.com/wailsapp/wails/v3/pkg/events"
 	"log"
 )
 
@@ -14,14 +15,17 @@ import (
 var assets embed.FS
 
 func main() {
-	service2.MonitorProcesses()
-
 	config2.Application.Assets.Handler = application.AssetFileServerFS(assets)
 	config2.Application.Services = []application.Service{
-		application.NewService(&service.TestService{}),
+		application.NewService(service.Vrchat),
+		application.NewService(service2.Application),
 	}
 
 	var instance = application.New(config2.Application)
+
+	instance.On(events.Common.ApplicationStarted, func(event *application.Event) {
+		service2.Application.MonitorProcesses()
+	})
 
 	instance.NewWebviewWindowWithOptions(config2.Window)
 
