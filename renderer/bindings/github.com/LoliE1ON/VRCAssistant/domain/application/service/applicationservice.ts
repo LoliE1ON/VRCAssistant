@@ -5,6 +5,15 @@
 // @ts-ignore: Unused imports
 import {Call as $Call} from "@wailsio/runtime";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: Unused imports
+import * as $models from "./models.js";
+
+export function GetModel(): Promise<$models.Model> & { cancel(): void } {
+    let $resultPromise = $Call.ByID(4184203679) as any;
+    return $resultPromise;
+}
+
 export function MonitorProcesses(): Promise<void> & { cancel(): void } {
     let $resultPromise = $Call.ByID(2380201161) as any;
     return $resultPromise;

@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	model2 "github.com/LoliE1ON/VRCAssistant/domain/application/model"
 	"github.com/LoliE1ON/VRCAssistant/domain/vrchat/config"
 	"github.com/LoliE1ON/VRCAssistant/domain/vrchat/model"
 	"github.com/mitchellh/go-ps"
@@ -46,4 +47,18 @@ func (service *ApplicationService) MonitorProcesses() {
 
 func (service *ApplicationService) Quit() {
 	application.Get().Quit()
+}
+
+type Model struct {
+	Vrchat  model.VrchatModel
+	Osc     model2.OscModel
+	Steamvr model2.SteamvrModel
+}
+
+func (service *ApplicationService) GetModel() Model {
+	return Model{
+		Vrchat:  model.Vrchat,
+		Osc:     model2.Osc,
+		Steamvr: model2.Steamvr,
+	}
 }
